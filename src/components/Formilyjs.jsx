@@ -4,6 +4,7 @@ import { createForm, onFormValuesChange } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 import { FormButtonGroup, Submit } from '@formily/antd-v5'
 import { Button } from 'antd'
+import { bauart } from '../data/dataExample'
 
 const SchemaField = createSchemaField({
   components: {
@@ -45,31 +46,20 @@ const Formilyjs = () => {
 
   // Generate dynamic schema based on current fields
   const generateSchema = () => {
-    const baseProperties = {
-      // first input
-      input: {
+    const baseProperties = {}
+
+    bauart.data.bauart.forEach(bauart => {
+      baseProperties[bauart.id] = {
         type: 'string',
-        title: 'First Input',
-        default: 'Input 1',
+        title: "Bezeichnung",
+        default: bauart.bezeichnung,
         'x-decorator': 'FormItem',
         'x-component': 'Input',
         'x-component-props': {
           style: { width: 240 },
         },
-      },
-      // second input
-      input2: {
-        type: 'string',
-        title: 'Second Input',
-        default: 'Input 2',
-        'x-decorator': 'FormItem',
-        'x-component': 'Input',
-        'x-component-props': {
-          placeholder: 'Type something…',
-          style: { width: 240 },
-        },
-      },
-    }
+      }
+    })
 
     // Add dynamic fields to schema
     dynamicFields.forEach(field => {
