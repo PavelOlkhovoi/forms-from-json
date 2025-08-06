@@ -13,10 +13,6 @@ const SchemaField = createSchemaField({
 })
 
 const form = createForm({
-  initialValues: {
-    input: 'Hello World',
-    input2: 'Second Default',
-  },
   effects() {
     onFormValuesChange(({ values, changed }) => {
       console.log('xxx Form values changed:', values)
@@ -54,6 +50,7 @@ const Formilyjs = () => {
       input: {
         type: 'string',
         title: 'First Input',
+        default: 'Input 1',
         'x-decorator': 'FormItem',
         'x-component': 'Input',
         'x-component-props': {
@@ -64,6 +61,7 @@ const Formilyjs = () => {
       input2: {
         type: 'string',
         title: 'Second Input',
+        default: 'Input 2',
         'x-decorator': 'FormItem',
         'x-component': 'Input',
         'x-component-props': {
