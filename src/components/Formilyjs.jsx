@@ -28,7 +28,7 @@ const Formilyjs = () => {
 
   const addDynamicField = () => {
     const newField = {
-      key: `dynamic_input_${fieldCounter}`,
+      key: `dynamic_key_${fieldCounter}`,
       title: `Dynamic Input ${fieldCounter - 2}`,
       placeholder: `Enter value for field ${fieldCounter - 2}...`
     }
@@ -43,23 +43,15 @@ const Formilyjs = () => {
   const transformFormData = (formValues) => {
     const transformedData = []
     
-    // Iterate through form values and transform bauart fields
     Object.entries(formValues).forEach(([key, value]) => {
-      // Check if the key is a number (bauart ID)
-      const id = parseInt(key)
-      if (!isNaN(id) && value) {
-        transformedData.push({
-          id: id,
-          bezeichnung: value
-        })
-      }
+      transformedData.push({
+        id: key,
+        bezeichnung: value
+      })
     })
-    
-    // Sort by id to maintain consistent order
     return transformedData.sort((a, b) => a.id - b.id)
   }
 
-  // Handle form submission with data transformation
   const handleSubmit = (formValues) => {
     const originalData = formValues
     const transformedData = transformFormData(formValues)
@@ -67,11 +59,7 @@ const Formilyjs = () => {
     console.log('Original form data:', originalData)
     console.log('Transformed data:', transformedData)
     
-    // Show both formats in alert for comparison
-    alert(`Original: ${JSON.stringify(originalData, null, 2)}\n\nTransformed: ${JSON.stringify(transformedData, null, 2)}`)
-    
-    // Here you would typically send transformedData to your API
-    // saveToAPI(transformedData)
+
   }
 
   // Generate dynamic schema based on current fields
