@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FormItem, Input } from '@formily/antd-v5'
+import { FormItem, Input, ArrayItems } from '@formily/antd-v5'
 import { createForm, onFormValuesChange } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 import { FormButtonGroup, Submit } from '@formily/antd-v5'
@@ -10,10 +10,22 @@ const SchemaField = createSchemaField({
   components: {
     Input,
     FormItem,
+    ArrayItems,
   },
 })
 
+// Convert bauart data to array format for initial values
+const getInitialBauartData = () => {
+  return bauart.data.bauart.map(item => ({
+    id: item.id,
+    bezeichnung: item.bezeichnung
+  }))
+}
+
 const form = createForm({
+  initialValues: {
+    bauartItems: getInitialBauartData()
+  },
   effects() {
     onFormValuesChange(({ values, changed }) => {
       console.log('xxx Form values changed:', values)
@@ -40,44 +52,47 @@ const Formilyjs = () => {
     setDynamicFields(dynamicFields.filter(field => field.key !== keyToRemove))
     form.deleteValuesIn(keyToRemove)
   }
-  const transformFormData = (formValues) => {
-    const transformedData = []
-    
-    Object.entries(formValues).forEach(([key, value]) => {
-      transformedData.push({
-        id: key,
-        bezeichnung: value
-      })
-    })
-    return transformedData.sort((a, b) => a.id - b.id)
-  }
 
   const handleSubmit = (formValues) => {
-    const originalData = formValues
-    const transformedData = transformFormData(formValues)
+    console.log('Form data (already in array format):', formValues.bauartItems)
     
-    console.log('Original form data:', originalData)
-    console.log('Transformed data:', transformedData)
-    
-
+    // The data is already in the desired format!
+    console.log('xxx form value', formValues)
   }
 
-  // Generate dynamic schema based on current fields
+  // Generate schema with array structure
   const generateSchema = () => {
-    const baseProperties = {}
-
-    bauart.data.bauart.forEach(bauart => {
-      baseProperties[bauart.id] = {
-        type: 'string',
-        title: "Bezeichnung",
-        default: bauart.bezeichnung,
+    const baseProperties = {
+      bauartItems: {
+        type: 'array',
         'x-decorator': 'FormItem',
-        'x-component': 'Input',
-        'x-component-props': {
-          style: { width: 240 },
-        },
+        'x-component': 'ArrayItems',
+        items: {
+          type: 'object',
+          properties: {
+            // id: {
+            //   type: 'number',
+            //   'x-decorator': 'FormItem',
+            //   'x-component': 'Input',
+            //   'x-component-props': {
+            //     disabled: true,
+            //     style: { width: 80 }
+            //   },
+            //   title: 'ID'
+            // },
+            bezeichnung: {
+              type: 'string',
+              'x-decorator': 'FormItem',
+              'x-component': 'Input',
+              'x-component-props': {
+                style: { width: 240 }
+              },
+              title: 'Bezeichnung'
+            }
+          }
+        }
       }
-    })
+    }
 
     // Add dynamic fields to schema
     dynamicFields.forEach(field => {
@@ -113,8 +128,8 @@ const Formilyjs = () => {
       <SchemaField schema={generateSchema()} />
       
       <div style={{ margin: '16px 0' }}>
-        <Button type="dashed" onClick={addDynamicField} block>
-          + Add New Input
+        <Button type="dashed" onClick={addDynamicField} block style={{ marginBottom: '8px' }}>
+          + Add Custom Input
         </Button>
       </div>
 
