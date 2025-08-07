@@ -6,6 +6,8 @@ import {
   Editable,
   FormButtonGroup,
   Submit,
+  Select,
+  Checkbox,
 } from '@formily/antd-v5'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
@@ -16,33 +18,35 @@ const SchemaField = createSchemaField({
     Editable,
     Input,
     ArrayTable,
+    Select,
+    Checkbox,
   },
 })
 
+// Default data to pre-fill the table
 const defaultTableData = [
   {
-    schluessel: '1', // Using key from enum
-    bezeichnung: '1', // Using key from enum
-    status: 'active',
-    wert: true,
+    schluessel: 11, // Simple number
+    bezeichnung: 'Schaltschrank', // String value
+    wert: null,
     pflichtfeld: false
   },
   {
-    schluessel: '2',
-    bezeichnung: '2',
-    wert: false,
+    schluessel: 22,
+    bezeichnung: 'Blechkasten',
+    wert: null,
     pflichtfeld: true
   },
   {
-    schluessel: '3',
-    bezeichnung: '3',
-    wert: true,
+    schluessel: 33,
+    bezeichnung: 'Schaltraum',
+    wert: null,
     pflichtfeld: false
   },
   {
-    schluessel: '4',
-    bezeichnung: '4',
-    wert: false,
+    schluessel: 44,
+    bezeichnung: 'RS-Gehäuse Z6',
+    wert: null,
     pflichtfeld: true
   }
 ]
@@ -63,7 +67,6 @@ const schema = {
       'x-component-props': {
         pagination: false,
         scroll: { x: '100%' },
-        // rowSelection: true
       },
       items: {
         type: 'object',
@@ -71,18 +74,19 @@ const schema = {
           column1: {
             type: 'void',
             'x-component': 'ArrayTable.Column',
-            'x-component-props': { width: 50, title: 'Schlüssel', align: 'center' },
+            'x-component-props': { width: 100, title: 'Schlüssel', align: 'center' },
             properties: {
               schluessel: {
-                type: 'void',
-                'x-component': 'ArrayTable.Index',
+                type: 'string',
+                'x-decorator': 'Editable',
+                'x-component': 'Input',
               },
             },
           },
           column2: {
             type: 'void',
             'x-component': 'ArrayTable.Column',
-            'x-component-props': { width: 80, title: 'Bezeichnung', align: 'center' },
+            'x-component-props': { width: 250, title: 'Bezeichnung', align: 'center' },
             properties: {
               bezeichnung: {
                 type: 'string',
@@ -94,27 +98,28 @@ const schema = {
           column3: {
             type: 'void',
             'x-component': 'ArrayTable.Column',
-            'x-component-props': { width: 200, title: 'Wert', align: 'center' },
+            'x-component-props': { width: 150, title: 'Wert', align: 'center' },
             properties: {
               wert: {
-                type: 'boolean',
-                'x-component': 'Checkbox',
+                type: 'string',
+                'x-decorator': 'Editable',
+                'x-component': 'Input',
               },
             },
           },
           column4: {
             type: 'void',
             'x-component': 'ArrayTable.Column',
-            'x-component-props': { width: 200, title: 'pflichtfeld', align: 'center' },
+            'x-component-props': { width: 150, title: 'Pflichtfeld', align: 'center' },
             properties: {
               pflichtfeld: {
-                type: 'string',
+                type: 'boolean',
                 'x-decorator': 'FormItem',
                 'x-component': 'Checkbox',
               },
             },
           },
-          column6: {
+          column5: {
             type: 'void',
             'x-component': 'ArrayTable.Column',
             'x-component-props': {
@@ -154,7 +159,12 @@ const FormilyjsTable = () => {
     <FormProvider form={form}>
       <SchemaField schema={schema} />
       <FormButtonGroup>
-        <Submit onSubmit={console.log}>Submit</Submit>
+        <Submit onSubmit={(values) => {
+          console.log('Form values:', values)
+          alert(JSON.stringify(values, null, 2))
+        }}>
+          Submit
+        </Submit>
       </FormButtonGroup>
     </FormProvider>
   )
