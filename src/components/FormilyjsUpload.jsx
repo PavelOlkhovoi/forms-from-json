@@ -4,6 +4,7 @@ import {
   FormButtonGroup,
   Submit,
   Input,
+  FormLayout,
 } from '@formily/antd-v5'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
@@ -67,16 +68,18 @@ const FormilyjsUpload = ({defaultValues = {}, schema = {}}) => {
 
   return (
     <FormProvider form={form}>
-      <SchemaField schema={schema} />
-      <FormButtonGroup.FormItem>
-        <Submit onSubmit={(values) => {
-          console.log('xxx Form values:', values)
-      }}>
-        Submit
-      </Submit>
-    </FormButtonGroup.FormItem>
-  </FormProvider>
-)
+      <FormLayout labelCol={6} wrapperCol={18} layout="horizontal">
+        <SchemaField schema={schema} />
+        <FormButtonGroup.FormItem>
+          <Submit onSubmit={(values) => {
+            console.log('xxx Form values:', values)
+          }}>
+            Submit
+          </Submit>
+        </FormButtonGroup.FormItem>
+      </FormLayout>
+    </FormProvider>
+  )
 }
 
 export default FormilyjsUpload
