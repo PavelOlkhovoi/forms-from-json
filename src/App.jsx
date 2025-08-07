@@ -7,8 +7,12 @@ function App() {
 
   return (
    // <Rsf />
-   //<Formilyjs />
-   <FormilyjsTable />
+<>
+<Formilyjs />
+<br />
+<hr />
+<FormilyjsTable />
+</>
   );
 }
 
