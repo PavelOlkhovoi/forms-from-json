@@ -19,7 +19,39 @@ const SchemaField = createSchemaField({
   },
 })
 
-const form = createForm()
+const defaultTableData = [
+  {
+    schluessel: '1', // Using key from enum
+    bezeichnung: '1', // Using key from enum
+    status: 'active',
+    wert: true,
+    pflichtfeld: false
+  },
+  {
+    schluessel: '2',
+    bezeichnung: '2',
+    wert: false,
+    pflichtfeld: true
+  },
+  {
+    schluessel: '3',
+    bezeichnung: '3',
+    wert: true,
+    pflichtfeld: false
+  },
+  {
+    schluessel: '4',
+    bezeichnung: '4',
+    wert: false,
+    pflichtfeld: true
+  }
+]
+
+const form = createForm({
+  initialValues: {
+    array: defaultTableData
+  }
+})
 
 const schema = {
   type: 'object',
@@ -29,8 +61,9 @@ const schema = {
       'x-decorator': 'FormItem',
       'x-component': 'ArrayTable',
       'x-component-props': {
-        pagination: { pageSize: 10 },
+        pagination: false,
         scroll: { x: '100%' },
+        // rowSelection: true
       },
       items: {
         type: 'object',
@@ -40,7 +73,7 @@ const schema = {
             'x-component': 'ArrayTable.Column',
             'x-component-props': { width: 50, title: 'Schlüssel', align: 'center' },
             properties: {
-              sort: {
+              schluessel: {
                 type: 'void',
                 'x-component': 'ArrayTable.Index',
               },
