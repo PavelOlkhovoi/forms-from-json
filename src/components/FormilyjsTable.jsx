@@ -11,6 +11,7 @@ import {
 } from '@formily/antd-v5'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
+import { infobaustein_template } from '../data/dataExample'
 
 const SchemaField = createSchemaField({
   components: {
@@ -22,6 +23,16 @@ const SchemaField = createSchemaField({
     Checkbox,
   },
 })
+
+const takeInitialValue = infobaustein_template.data.infobaustein_template[0]
+const generateDefaultTableData = () => {
+  return takeInitialValue.ar_bausteineArray.map(item => ({
+    schluessel: item.infobaustein.schluessel,
+    bezeichnung: item.infobaustein.bezeichnung,
+    wert: null,
+    pflichtfeld: false
+  }))
+}
 
 // Default data to pre-fill the table
 const defaultTableData = [
@@ -53,9 +64,9 @@ const defaultTableData = [
 
 const form = createForm({
   initialValues: {
-    schluessel: '',
-    bezeichnung: '',
-    array: defaultTableData
+    schluessel: takeInitialValue.schluessel,
+    bezeichnung: takeInitialValue.bezeichnung,
+    array: generateDefaultTableData()
   }
 })
 
