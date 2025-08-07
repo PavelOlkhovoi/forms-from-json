@@ -53,6 +53,8 @@ const defaultTableData = [
 
 const form = createForm({
   initialValues: {
+    schluessel: '',
+    bezeichnung: '',
     array: defaultTableData
   }
 })
@@ -60,6 +62,24 @@ const form = createForm({
 const schema = {
   type: 'object',
   properties: {
+    schluessel: {
+      type: 'string',
+      title: 'Schlüessel',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
+      'x-component-props': {
+        placeholder: 'Enter additional input 1',
+      },
+    },
+    bezeichnung: {
+      type: 'string',
+      title: 'Bezeichnung',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
+      'x-component-props': {
+        placeholder: 'Enter additional input 2',
+      },
+    },
     array: {
       type: 'array',
       'x-decorator': 'FormItem',
