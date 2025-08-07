@@ -3,7 +3,7 @@ import FormilyjsTable from "./components/FormilyjsTable";
 import FormilyjsUpload from "./components/FormilyjsUpload";
 import Rsf from "./components/Rsf";
 import { defaultValuesMast } from "./data/dataExample";
-import { schemaMass } from "./helpers/schemas";
+import { schemaMass, schemaMassWithProps } from "./helpers/schemas";
   
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
 <br />
 <hr />
 <br />
-<FormilyjsUpload defaultValues={defaultValuesMast} schema={schemaMass}/>
+<FormilyjsUpload defaultValues={defaultValuesMast} schema={schemaMassWithProps(defaultValuesMast.dokumenteArray)}/>
 </>
   );
 }

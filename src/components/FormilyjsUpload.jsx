@@ -64,23 +64,10 @@ const FormilyjsUpload = ({defaultValues = {}, schema = {}}) => {
     initialValues: defaultValues,
   })
   
-  // Create a modified schema with dynamic props
-  const modifiedSchema = {
-    ...schema,
-    properties: {
-      ...schema.properties,
-      dokumenteArray: {
-        ...schema.properties?.dokumenteArray,
-        'x-component-props': {
-          data: defaultValues.dokumenteArray?.map(doc => ({ title: doc })) || []
-        }
-      }
-    }
-  }
 
   return (
     <FormProvider form={form}>
-      <SchemaField schema={modifiedSchema} />
+      <SchemaField schema={schema} />
       <FormButtonGroup.FormItem>
         <Submit onSubmit={(values) => {
           console.log('xxx Form values:', values)
