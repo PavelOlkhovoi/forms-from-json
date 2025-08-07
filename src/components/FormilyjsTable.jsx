@@ -38,58 +38,46 @@ const schema = {
           column1: {
             type: 'void',
             'x-component': 'ArrayTable.Column',
-            'x-component-props': { width: 50, title: 'Sort', align: 'center' },
+            'x-component-props': { width: 50, title: 'Schlüssel', align: 'center' },
             properties: {
               sort: {
                 type: 'void',
-                'x-component': 'ArrayTable.SortHandle',
+                'x-component': 'ArrayTable.Index',
               },
             },
           },
           column2: {
             type: 'void',
             'x-component': 'ArrayTable.Column',
-            'x-component-props': { width: 80, title: 'Index', align: 'center' },
+            'x-component-props': { width: 80, title: 'Bezeichnung', align: 'center' },
             properties: {
-              index: {
-                type: 'void',
-                'x-component': 'ArrayTable.Index',
-              },
-            },
-          },
-          column3: {
-            type: 'void',
-            'x-component': 'ArrayTable.Column',
-            'x-component-props': { width: 200, title: 'A1' },
-            properties: {
-              a1: {
+              bezeichnung: {
                 type: 'string',
                 'x-decorator': 'Editable',
                 'x-component': 'Input',
               },
             },
           },
-          column4: {
+          column3: {
             type: 'void',
             'x-component': 'ArrayTable.Column',
-            'x-component-props': { width: 200, title: 'A2' },
+            'x-component-props': { width: 200, title: 'Wert', align: 'center' },
             properties: {
-              a2: {
-                type: 'string',
-                'x-decorator': 'FormItem',
-                'x-component': 'Input',
+              wert: {
+                type: 'boolean',
+                'x-component': 'Checkbox',
               },
             },
           },
-          column5: {
+          column4: {
             type: 'void',
             'x-component': 'ArrayTable.Column',
-            'x-component-props': { width: 200, title: 'A3' },
+            'x-component-props': { width: 200, title: 'pflichtfeld', align: 'center' },
             properties: {
-              a3: {
+              pflichtfeld: {
                 type: 'string',
                 'x-decorator': 'FormItem',
-                'x-component': 'Input',
+                'x-component': 'Checkbox',
               },
             },
           },
@@ -110,14 +98,6 @@ const schema = {
                   remove: {
                     type: 'void',
                     'x-component': 'ArrayTable.Remove',
-                  },
-                  moveDown: {
-                    type: 'void',
-                    'x-component': 'ArrayTable.MoveDown',
-                  },
-                  moveUp: {
-                    type: 'void',
-                    'x-component': 'ArrayTable.MoveUp',
                   },
                 },
               },
