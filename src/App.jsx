@@ -2,7 +2,9 @@ import Formilyjs from "./components/Formilyjs";
 import FormilyjsTable from "./components/FormilyjsTable";
 import FormilyjsUpload from "./components/FormilyjsUpload";
 import Rsf from "./components/Rsf";
-
+import { defaultValuesMast } from "./data/dataExample";
+import { schemaMass } from "./helpers/schemas";
+  
 
 function App() {
 
@@ -17,7 +19,7 @@ function App() {
 <br />
 <hr />
 <br />
-<FormilyjsUpload />
+<FormilyjsUpload defaultValues={defaultValuesMast} schema={schemaMass}/>
 </>
   );
 }
