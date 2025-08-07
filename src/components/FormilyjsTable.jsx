@@ -180,8 +180,7 @@ const FormilyjsTable = () => {
       <SchemaField schema={schema} />
       <FormButtonGroup>
         <Submit onSubmit={(values) => {
-          console.log('Form values:', values)
-          alert(JSON.stringify(values, null, 2))
+          console.log('xxx Form values:', values)
         }}>
           Submit
         </Submit>
