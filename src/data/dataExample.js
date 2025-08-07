@@ -255,7 +255,7 @@ export const infobaustein_template =
 }
 
 
-export masstype = {
+export const masstype = {
   "data": {
     "tkey_masttyp": [
       {

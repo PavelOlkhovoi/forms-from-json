@@ -1,14 +1,14 @@
 import {
   Upload,
   FormItem,
-  FormLayout,
   FormButtonGroup,
   Submit,
+  Input,
 } from '@formily/antd-v5'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 import { Button, List } from 'antd'
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons'
+import { UploadOutlined } from '@ant-design/icons'
 
 const CustomList = (props) => {
   const data = [
@@ -50,9 +50,9 @@ const NormalUpload = (props) => {
 
 const SchemaField = createSchemaField({
   components: {
-    NormalUpload,
     FormItem,
     CustomList,
+    Input,
   },
 })
 
@@ -61,16 +61,39 @@ const form = createForm()
 const schema = {
   type: 'object',
   properties: {
-    upload: {
-      type: 'array',
-      title: 'Documents',
-      required: true,
+    masttyp: {
+      type: 'number',
+      title: 'Masstyp',
       'x-decorator': 'FormItem',
-      'x-component': 'NormalUpload',
+      'x-component': 'Input',
+    },
+    bezeichnung: {
+      type: 'string',
+      title: 'Bezeichnung',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
+    },
+    hersteller: {
+      type: 'string',
+      title: 'Hersteller',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
+    },
+    wandstaerke: {
+      type: 'number',
+      title: 'Wandstärke (in mm)',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
+    },
+    lph: {
+      type: 'number',
+      title: 'LPH (Lichtpunkthöhe in Meter)',
+      'x-decorator': 'FormItem',
+      'x-component': 'Input',
     },
     customList: {
       type: 'void',
-      title: 'Custom List',
+      title: 'Dokumente',
       'x-decorator': 'FormItem',
       'x-component': 'CustomList',
     },
@@ -79,12 +102,14 @@ const schema = {
 
 const FormilyjsUpload = () => (
   <FormProvider form={form}>
-    <FormLayout labelCol={6} wrapperCol={16}>
-      <SchemaField schema={schema} />
-      <FormButtonGroup.FormItem>
-        <Submit onSubmit={console.log}>Submit</Submit>
-      </FormButtonGroup.FormItem>
-    </FormLayout>
+    <SchemaField schema={schema} />
+    <FormButtonGroup.FormItem>
+      <Submit onSubmit={(values) => {
+        console.log('xxx Form values:', values)
+      }}>
+        Submit
+      </Submit>
+    </FormButtonGroup.FormItem>
   </FormProvider>
 )
 
