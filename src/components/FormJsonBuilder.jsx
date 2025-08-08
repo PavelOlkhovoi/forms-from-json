@@ -8,7 +8,7 @@ import {
   Editable,
   ArrayTable,
 } from '@formily/antd-v5'
-import { createForm } from '@formily/core'
+import { createForm, onFieldValueChange, onFormValuesChange } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
 import { Button, Checkbox, List, Select } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
@@ -69,6 +69,11 @@ const FormJsonBuilder = ({defaultValues = {}, schema = {}}) => {
   
   const form = createForm({
     initialValues: defaultValues,
+  effects() {
+    onFormValuesChange((form) => {
+      console.log('xxx Form values changed:', JSON.parse(JSON.stringify(form.values)))
+    })
+  },
   })
   
 
