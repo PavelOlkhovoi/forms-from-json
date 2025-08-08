@@ -224,7 +224,7 @@ export const schemaMass = {
             'x-component': 'ArrayItems',
             'x-decorator': 'FormItem',
             items: {
-              type: 'void',
+              type: 'object',
               'x-component': 'Space',
               properties: {
                 bezeichnung: {
