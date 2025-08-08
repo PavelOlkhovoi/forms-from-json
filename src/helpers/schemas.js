@@ -164,31 +164,46 @@ export const schemaMass = {
         title: 'Masstyp',
         'x-decorator': 'FormItem',
         'x-component': 'Input',
+        'x-decorator-props': {
+            inset: true,
+          }
       },
       bezeichnung: {
         type: 'string',
         title: 'Bezeichnung',
         'x-decorator': 'FormItem',
         'x-component': 'Input',
+        'x-decorator-props': {
+            inset: true,
+          }
       },
       hersteller: {
         type: 'string',
         title: 'Hersteller',
         'x-decorator': 'FormItem',
         'x-component': 'Input',
+        'x-decorator-props': {
+            inset: true,
+          }
       },
       wandstaerke: {
         type: 'number',
         title: 'Wandstärke (in mm)',
         'x-decorator': 'FormItem',
         'x-component': 'Input',
+        'x-decorator-props': {
+            inset: true,
+          }
       },
       lph: {
         type: 'number',
         title: 'LPH (Lichtpunkthöhe in Meter)',
         'x-decorator': 'FormItem',
         'x-component': 'Input',
-      },
+        'x-decorator-props': {
+            inset: true,
+          }
+              },
       dokumenteArray: {
         type: 'void',
         title: 'Dokumente',
