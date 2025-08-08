@@ -34,33 +34,6 @@ const generateDefaultTableData = () => {
   }))
 }
 
-// Default data to pre-fill the table
-const defaultTableData = [
-  {
-    schluessel: 11, // Simple number
-    bezeichnung: 'Schaltschrank', // String value
-    wert: null,
-    pflichtfeld: false
-  },
-  {
-    schluessel: 22,
-    bezeichnung: 'Blechkasten',
-    wert: null,
-    pflichtfeld: true
-  },
-  {
-    schluessel: 33,
-    bezeichnung: 'Schaltraum',
-    wert: null,
-    pflichtfeld: false
-  },
-  {
-    schluessel: 44,
-    bezeichnung: 'RS-Gehäuse Z6',
-    wert: null,
-    pflichtfeld: true
-  }
-]
 
 const form = createForm({
   initialValues: {

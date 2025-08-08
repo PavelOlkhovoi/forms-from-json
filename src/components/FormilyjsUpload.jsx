@@ -5,10 +5,12 @@ import {
   Submit,
   Input,
   FormLayout,
+  Editable,
+  ArrayTable,
 } from '@formily/antd-v5'
 import { createForm } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
-import { Button, List } from 'antd'
+import { Button, Checkbox, List, Select } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
 
 const dataDemo = [
@@ -58,6 +60,10 @@ const FormilyjsUpload = ({defaultValues = {}, schema = {}}) => {
       FormItem,
       CustomList,
       Input,
+      Editable,
+      ArrayTable,
+      Select,
+      Checkbox,
     },
   })
   
