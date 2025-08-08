@@ -219,20 +219,23 @@ export const schemaMass = {
     export const schemaStringArray = {
         type: 'object',
         properties: {
-          string_array: {
+            bauartItems: {
             type: 'array',
             'x-component': 'ArrayItems',
             'x-decorator': 'FormItem',
-            title: 'String array',
             items: {
               type: 'void',
               'x-component': 'Space',
               properties: {
-                input: {
-                  type: 'string',
-                  'x-decorator': 'FormItem',
-                  'x-component': 'Input',
-                },
+                bezeichnung: {
+                    type: 'string',
+                    'x-decorator': 'FormItem',
+                    'x-component': 'Input',
+                    'x-component-props': {
+                      style: { width: 240 }
+                    },
+                    title: 'Bezeichnung'
+                  },
                 remove: {
                   type: 'void',
                   'x-decorator': 'FormItem',

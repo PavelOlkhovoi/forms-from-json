@@ -12,3 +12,14 @@ export const generateDefaultTableData = (takeInitialValue) => {
         array,
     }
   }
+
+  export const getInitialBauartData = (bauart) => {
+    const array = bauart.map(item => ({
+      id: item.id,
+      bezeichnung: item.bezeichnung
+    }))
+    return {
+        bauartItems: array
+    }
+  }
+  
