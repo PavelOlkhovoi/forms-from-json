@@ -1,6 +1,6 @@
 import Formilyjs from "./components/Formilyjs";
 import FormilyjsTable from "./components/FormilyjsTable";
-import FormilyjsUpload from "./components/FormilyjsUpload";
+import FormJsonBuilder from "./components/FormJsonBuilder";
 import Rsf from "./components/Rsf";
 import { defaultValuesMast, infobaustein_template } from "./data/dataExample";
 import { generateDefaultTableData } from "./helpers/dataHelper";
@@ -20,8 +20,8 @@ const takeInitialTableValue = generateDefaultTableData(infobaustein_template.dat
 {/* <br />
 <hr />
 <br /> */}
-<FormilyjsUpload defaultValues={defaultValuesMast} schema={schemaMassWithProps(defaultValuesMast.dokumenteArray)}/>
-<FormilyjsUpload defaultValues={takeInitialTableValue} schema={schemaTable}/>
+<FormJsonBuilder defaultValues={defaultValuesMast} schema={schemaMassWithProps(defaultValuesMast.dokumenteArray)}/>
+<FormJsonBuilder defaultValues={takeInitialTableValue} schema={schemaTable}/>
 </>
   );
 }

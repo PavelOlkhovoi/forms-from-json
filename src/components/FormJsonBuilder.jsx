@@ -54,7 +54,7 @@ const NormalUpload = (props) => {
 
 
 
-const FormilyjsUpload = ({defaultValues = {}, schema = {}}) => {
+const FormJsonBuilder = ({defaultValues = {}, schema = {}}) => {
   const SchemaField = createSchemaField({
     components: {
       FormItem,
@@ -74,7 +74,7 @@ const FormilyjsUpload = ({defaultValues = {}, schema = {}}) => {
 
   return (
     <FormProvider form={form}>
-      <FormLayout labelCol={6} wrapperCol={18} layout="horizontal">
+      <FormLayout labelCol={4} wrapperCol={20} layout="horizontal" style={{ padding: '20px' }}>
         <SchemaField schema={schema} />
         <FormButtonGroup.FormItem>
           <Submit onSubmit={(values) => {
@@ -88,4 +88,4 @@ const FormilyjsUpload = ({defaultValues = {}, schema = {}}) => {
   )
 }
 
-export default FormilyjsUpload
+export default FormJsonBuilder
