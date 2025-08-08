@@ -215,3 +215,39 @@ export const schemaMass = {
   },
 }    }   
     }   
+
+    export const schemaStringArray = {
+        type: 'object',
+        properties: {
+          string_array: {
+            type: 'array',
+            'x-component': 'ArrayItems',
+            'x-decorator': 'FormItem',
+            title: 'String array',
+            items: {
+              type: 'void',
+              'x-component': 'Space',
+              properties: {
+                input: {
+                  type: 'string',
+                  'x-decorator': 'FormItem',
+                  'x-component': 'Input',
+                },
+                remove: {
+                  type: 'void',
+                  'x-decorator': 'FormItem',
+                  'x-component': 'ArrayItems.Remove',
+                },
+              },
+            },
+            properties: {
+              add: {
+                type: 'void',
+                title: 'Add entry',
+                'x-component': 'ArrayItems.Addition',
+              },
+            },
+          },
+        },
+      }
+      
