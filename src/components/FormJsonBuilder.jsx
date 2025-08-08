@@ -73,11 +73,16 @@ const FormJsonBuilder = ({defaultValues = {}, schema = {}}) => {
   
   const form = createForm({
     initialValues: defaultValues,
-  effects() {
-    onFormValuesChange((form) => {
-      console.log('xxx Form values changed:', JSON.parse(JSON.stringify(form.values)))
-    })
-  },
+    effects() {
+      onFormValuesChange((form) => {
+        console.log('xxx Form values changed:', JSON.parse(JSON.stringify(form.values)))
+      })
+
+    onFieldValueChange('*', (field) => {
+        console.log('xxx field:', field.value)
+      })
+
+    },
   })
   
 
