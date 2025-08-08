@@ -10,7 +10,8 @@ import {
   ArrayItems,
   Space,
   Select,
-  Checkbox
+  Checkbox,
+  FormGrid
 } from '@formily/antd-v5'
 import { createForm, onFieldValueChange, onFormValuesChange } from '@formily/core'
 import { FormProvider, createSchemaField } from '@formily/react'
@@ -69,7 +70,8 @@ const FormJsonBuilder = ({defaultValues = {}, schema = {}}) => {
       ArrayItems,
       Select,
       Checkbox,
-      Space
+      Space,
+      FormGrid
     },
   })
   
